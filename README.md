@@ -6,7 +6,7 @@ A super-simple fluent API for preserving your website's link juice and traffic b
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
         ...
-        app.UseRouteUrlRedirect(redirect =>
+        app.UseRequestRedirect(redirect =>
         {
             // Permanently redirect (emits 301 redirect to search engines)
             redirect.ForPath("/5/legacy-post-url/").RedirectTo("/new-post-url/").Permanently();
@@ -21,7 +21,7 @@ A super-simple fluent API for preserving your website's link juice and traffic b
 
 If you need to query a database or other location for a URL then you can also do the following:
 
-    app.UseRouteUrlRedirect(redirect =>
+    app.UseRequestRedirect(redirect =>
     {
         redirect.ForPath("/6/temporary-redirect/").RedirectTo(DeferredQueryDbForPath).Temporarily();
     });
